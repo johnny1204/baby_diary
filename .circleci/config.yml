@@ -1,7 +1,15 @@
-version: 2
+version: 2.1
+executors:
+  my-executor:
+    docker:
+      - image: circleci/php:7.4.9-fpm
+    environment:
+      APP_ENV: testing
 jobs:
   build:
-    docker:
-      - image: cimg/node:lts
+    executor:
+      name: my-executor
+    environment:
+      APP_NAME: test
     steps:
-      - run: echo "hello world"
+      - run: echo Hello World
